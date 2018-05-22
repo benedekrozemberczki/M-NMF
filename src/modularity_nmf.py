@@ -8,6 +8,9 @@ import time
 
 from calculation_helper import modularity_generator, overlap_generator
 from calculation_helper import graph_reader, json_dumper, log_setup, log_updater, loss_printer
+import os
+
+
 
 class MNMF:
     """
@@ -27,16 +30,17 @@ class MNMF:
             self.G = graph_reader(args.input)
 
             self.number_of_nodes = len(nx.nodes(self.G))
-            self.S_0 = tf.Variable(initial_value = overlap_generator(self.G), dtype=tf.float64)
+            if self.number_of_nodes>10000:
+                os.environ["CUDA_VISIBLE_DEVICES"]="-1"  
+            self.S_0 = tf.placeholder(tf.float64, shape=(None, None))
+            self.B1 = tf.placeholder(tf.float64, shape=(None, None))
+            self.B2 = tf.placeholder(tf.float64, shape=(None, None))
 
             self.M = tf.Variable(tf.random_uniform([self.number_of_nodes, self.args.dimensions],0,1, dtype=tf.float64))
             self.U = tf.Variable(tf.random_uniform([self.number_of_nodes, self.args.dimensions],0,1, dtype=tf.float64))
             self.H = tf.Variable(tf.random_uniform([self.number_of_nodes, self.args.clusters],0,1, dtype=tf.float64))
             self.C = tf.Variable(tf.random_uniform([self.args.clusters, self.args.dimensions],0,1, dtype=tf.float64))
 
-
-            self.B1 = tf.Variable(initial_value = np.array(nx.adjacency_matrix(self.G).todense()),dtype = np.float64)
-            self.B2 = tf.Variable(initial_value = modularity_generator(self.G), dtype=tf.float64)
             self.S = np.float64(self.args.eta)*self.S_0 + self.B1
             self.init = tf.global_variables_initializer()
 
@@ -115,7 +119,7 @@ class MNMF:
             self.stop_index = self.stop_index + 1
         return current_modularity
 
-    def initiate_dump(self,session):
+    def initiate_dump(self,session, feed_dict):
         """
         Method to save the clusters, node representations, cluster memberships and logs.
         """
@@ -124,8 +128,8 @@ class MNMF:
         json_dumper(self.logs, self.args.log_output)
         loss_printer(self.logs)
         if self.args.dump_matrices:
-            self.optimal_clusters = pd.DataFrame(self.C.eval(session=session), columns = map(lambda x: "X_"+ str(x), range(0,self.args.dimensions)))
-            self.optimal_node_representations = pd.DataFrame(self.U.eval(session=session), columns = map(lambda x: "X_"+ str(x), range(0,self.args.dimensions)))
+            self.optimal_clusters = pd.DataFrame(session.run(self.C, feed_dict=feed_dict), columns = map(lambda x: "X_"+ str(x), range(0,self.args.dimensions)))
+            self.optimal_node_representations = pd.DataFrame(session.run(self.U, feed_dict=feed_dict), columns = map(lambda x: "X_"+ str(x), range(0,self.args.dimensions)))
             self.optimal_clusters.to_csv(self.args.cluster_mean_output, index = None)
             self.optimal_node_representations.to_csv(self.args.embedding_output, index = None)
 
@@ -136,31 +140,18 @@ class MNMF:
         """
         self.best_modularity = 0
         self.stop_index = 0
-
         with tf.Session(graph = self.computation_graph) as session:
             self.init.run()
             self.logs = log_setup(self.args)
             print("Optimization started.\n")
             self.build_graph()
-            
+            feed_dict = {self.S_0: overlap_generator(self.G), self.B1: np.array(nx.adjacency_matrix(self.G).todense()), self.B2:modularity_generator(self.G)}
             for i in tqdm(range(self.args.iteration_number)):
                 start = time.time()
-                H = session.run(self.H)
+                H = session.run(self.H, feed_dict=feed_dict)
                 current_modularity = self.update_state(H)
                 end = time.time()
                 log_updater(self.logs, i,  end-start, current_modularity)
                 if self.stop_index > self.args.early_stopping:
                     break
-            self.initiate_dump(session)
-
-
-
-
-    
-
-
-
-
-
-
-
+            self.initiate_dump(session, feed_dict)
