@@ -5,12 +5,10 @@ import networkx as nx
 import community
 import pandas as pd
 import time
+import os
 
 from calculation_helper import modularity_generator, overlap_generator
 from calculation_helper import graph_reader, json_dumper, log_setup, log_updater, loss_printer
-import os
-
-
 
 class MNMF:
     """
