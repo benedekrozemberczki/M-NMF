@@ -4,7 +4,7 @@
 M-NMF is a graph embedding algorithm which learns a clustering based on features extracted with non-negative matrix factorization. The procedure places nodes in an abstract feature space where the inner product of node features reconstructs a proximity based matrix representation of the graph. M-NMF has a quadratic runtime complexity in the number of nodes. This implementation supports GPU use (Tensorflow).
 </p>
 <p align="center">
-  <img width="720" src="comunity_aware.jpeg">
+  <img width="720" src="community_aware.jpeg">
 </p>
 
 
