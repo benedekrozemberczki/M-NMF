@@ -69,8 +69,8 @@ def tab_printer(args):
     args = vars(args)
 
     t = Texttable() 
-    t.add_rows([["Parameter", "Value"]] +  [[k.replace("_"," ").capitalize(),v] for k,v in args.iteritems()])
-    print t.draw()
+    t.add_rows([["Parameter", "Value"]] +  [[k.replace("_"," ").capitalize(),v] for k,v in args.items()])
+    print(t.draw())
 
 def log_updater(log, repetition, optimization_time, modularity_score):
     """ 
@@ -94,5 +94,5 @@ def loss_printer(log):
     """
     t = Texttable() 
     t.add_rows([["Round","Modularity"]] +  [k for k in log["cluster_quality"]])
-    print t.draw()
+    print(t.draw())
     

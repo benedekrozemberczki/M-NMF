@@ -107,7 +107,7 @@ class MNMF:
         :return current_modularity: Modularity based on the cluster memberships.
         """
         indices = np.argmax(H, axis=1)
-        indices = {i:indices[i] for i in range(0,len(indices))}
+        indices = {int(i): int(indices[i]) for i in range(len(indices))}
         current_modularity = community.modularity(indices,self.G)
         if current_modularity > self.best_modularity:
             self.best_modularity = current_modularity
