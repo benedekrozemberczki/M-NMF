@@ -1,11 +1,11 @@
+import os
+import time
+import community
 import numpy as np
-import tensorflow as tf
+import pandas as pd
 from tqdm import tqdm
 import networkx as nx
-import community
-import pandas as pd
-import time
-import os
+import tensorflow as tf
 
 from calculation_helper import modularity_generator, overlap_generator
 from calculation_helper import graph_reader, json_dumper, log_setup, log_updater, loss_printer
@@ -126,8 +126,8 @@ class MNMF:
         json_dumper(self.logs, self.args.log_output)
         loss_printer(self.logs)
         if self.args.dump_matrices:
-            self.optimal_clusters = pd.DataFrame(session.run(self.C, feed_dict=feed_dict), columns = map(lambda x: "X_"+ str(x), range(0,self.args.dimensions)))
-            self.optimal_node_representations = pd.DataFrame(session.run(self.U, feed_dict=feed_dict), columns = map(lambda x: "X_"+ str(x), range(0,self.args.dimensions)))
+            self.optimal_clusters = pd.DataFrame(session.run(self.C, feed_dict=feed_dict), columns = map(lambda x: "X_"+ str(x), range(self.args.dimensions)))
+            self.optimal_node_representations = pd.DataFrame(session.run(self.U, feed_dict=feed_dict), columns = map(lambda x: "X_"+ str(x), range(self.args.dimensions)))
             self.optimal_clusters.to_csv(self.args.cluster_mean_output, index = None)
             self.optimal_node_representations.to_csv(self.args.embedding_output, index = None)
 
