@@ -13,6 +13,8 @@ This repository provides an implementation for M-NMF as it is described in:
 > Xiao Wang, Peng Cui, Jing Wang, Jain Pei, WenWu Zhu, Shiqiang Yang.
 > Proceedings of the Thirsty-First AAAI conference on Artificial Intelligence (AAAI-17).
 
+A reference MatLab implementation is available [[here]](https://github.com/AnryYang/M-NMF).
+
 ### Requirements
 
 The codebase is implemented in Python 3.5.2. Package versions used for development are just below.
