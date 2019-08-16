@@ -76,11 +76,9 @@ class MNMF:
         self.denom_5 = tf.matmul(self.C,tf.matmul(self.U,self.U, transpose_a=True))
         self.denom_6 =  tf.maximum(np.float64(self.args.lower_control), self.denom_5) 
         self.C = self.C.assign(tf.nn.l2_normalize(tf.multiply(self.C,self.enum_3/self.denom_6),1))
-
         #---------------------------------    
         # 4. Phase
         #---------------------------------
-
         self.B1H = tf.matmul(self.B1,self.H,a_is_sparse= True)
         self.B2H = tf.matmul(self.B2,self.H,a_is_sparse= True)
         self.HHH = tf.matmul(self.H,(tf.matmul(self.H,self.H,transpose_a=True)))
@@ -118,7 +116,6 @@ class MNMF:
         """
         Method to save the clusters, node representations, cluster memberships and logs.
         """
-
         json_dumper(self.optimal_indices, self.args.assignment_output)
         json_dumper(self.logs, self.args.log_output)
         loss_printer(self.logs)
