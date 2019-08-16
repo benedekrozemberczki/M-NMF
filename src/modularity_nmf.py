@@ -6,7 +6,6 @@ import pandas as pd
 from tqdm import tqdm
 import networkx as nx
 import tensorflow as tf
-
 from calculation_helper import modularity_generator, overlap_generator
 from calculation_helper import graph_reader, json_dumper, log_setup, log_updater, loss_printer
 
@@ -51,11 +50,9 @@ class MNMF:
         3. Updating the cluster centers.
         4. Updating the membership of nodes.
         """
-
         #---------------------------------
         # 1. Phase
         #---------------------------------
-
         self.enum_1 = tf.matmul(self.S, self.U, a_is_sparse= True)
         self.denom_1 = tf.matmul(self.M, tf.matmul(self.U,self.U, transpose_a=True))
         self.denom_2 =  tf.maximum(np.float64(self.args.lower_control), self.denom_1)  
