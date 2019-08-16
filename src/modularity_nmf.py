@@ -61,17 +61,13 @@ class MNMF:
         #---------------------------------
         # 2. Phase
         #---------------------------------
-
         self.enum_2 = tf.matmul(self.S,self.M,transpose_a=True, a_is_sparse= True)+self.args.alpha*tf.matmul(self.H,self.C)
         self.denom_3 = tf.matmul(self.U,tf.matmul(self.M,self.M,transpose_a=True)+self.args.alpha*tf.matmul(self.C,self.C,transpose_a=True))
         self.denom_4 =  tf.maximum(np.float64(self.args.lower_control), self.denom_3) 
-
         self.U = self.U.assign(tf.nn.l2_normalize(np.multiply(self.U,self.enum_2/self.denom_4),1))
-
         #---------------------------------    
         # 3. Phase
         #---------------------------------
-
         self.enum_3 = tf.matmul(self.H,self.U,transpose_a=True)
         self.denom_5 = tf.matmul(self.C,tf.matmul(self.U,self.U, transpose_a=True))
         self.denom_6 =  tf.maximum(np.float64(self.args.lower_control), self.denom_5) 
@@ -83,15 +79,11 @@ class MNMF:
         self.B2H = tf.matmul(self.B2,self.H,a_is_sparse= True)
         self.HHH = tf.matmul(self.H,(tf.matmul(self.H,self.H,transpose_a=True)))
         self.UC = tf.matmul(self.U,self.C,transpose_b=True)
-
-
         self.rooted = tf.square(np.float64(2*self.args.beta)*self.B2H)+tf.multiply(np.float64(16*self.args.lambd)*self.HHH,(np.float64(2*self.args.beta)*self.B1H+np.float64(2*self.args.alpha)*self.UC +(np.float64(4*self.args.lambd-2*self.args.alpha))*self.H))
         self.sqroot_1 = tf.sqrt(self.rooted)
-
         self.enum_4 = np.float64(-2*self.args.beta)*self.B2H+self.sqroot_1
         self.denom_7 = np.float64(8*self.args.lambd)*self.HHH
         self.denom_8 =  tf.maximum(np.float64(self.args.lower_control), self.denom_7)
-
         self.sqroot_2 = tf.sqrt(self.enum_4/self.denom_8)
         self.H = self.H.assign(tf.nn.l2_normalize(tf.multiply(self.H,self.sqroot_2),1))
 
