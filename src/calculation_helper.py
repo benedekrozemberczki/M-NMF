@@ -29,7 +29,6 @@ def overlap_generator(G):
     laps = np.array([[float(len(sets[node_1].intersection(sets[node_2])))/(float(degrees[node_1]*degrees[node_2])**0.5) if node_1 != node_2 else 0.0 for node_1 in nx.nodes(G)] for node_2 in tqdm(nx.nodes(G))],dtype = np.float64)
     return laps
 
-
 def graph_reader(input_path):
     """
     Function to read a csv edge list and transform it to a networkx graph object.
@@ -67,7 +66,6 @@ def tab_printer(args):
     :param args: Parameters used for the model.
     """
     args = vars(args)
-
     t = Texttable() 
     t.add_rows([["Parameter", "Value"]] +  [[k.replace("_"," ").capitalize(),v] for k,v in args.items()])
     print(t.draw())
@@ -86,7 +84,6 @@ def log_updater(log, repetition, optimization_time, modularity_score):
     log["cluster_quality"] = log["cluster_quality"] + [[index, modularity_score]]
     return log
 
-
 def loss_printer(log):
     """
     Function to print the logs in a nice tabular format.
@@ -95,4 +92,3 @@ def loss_printer(log):
     t = Texttable() 
     t.add_rows([["Round","Modularity"]] +  [k for k in log["cluster_quality"]])
     print(t.draw())
-    
