@@ -57,7 +57,6 @@ class MNMF:
         self.denom_1 = tf.matmul(self.M, tf.matmul(self.U,self.U, transpose_a=True))
         self.denom_2 =  tf.maximum(np.float64(self.args.lower_control), self.denom_1)  
         self.M = self.M.assign(tf.nn.l2_normalize(tf.multiply(self.M, self.enum_1/self.denom_2), 1))
-
         #---------------------------------
         # 2. Phase
         #---------------------------------
