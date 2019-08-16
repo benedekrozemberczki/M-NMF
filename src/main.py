@@ -1,6 +1,6 @@
+from modularity_nmf import MNMF
 from parser import parameter_parser
 from calculation_helper import tab_printer
-from modularity_nmf import MNMF
 
 def create_and_run_model(args):
     """
