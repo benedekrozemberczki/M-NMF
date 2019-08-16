@@ -1,9 +1,9 @@
-import networkx as nx
-import numpy as np
-from tqdm import tqdm
-import pandas as pd
-from texttable import Texttable
 import json
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
+import networkx as nx
+from texttable import Texttable
 
 def modularity_generator(G):
     """
