@@ -27,8 +27,10 @@ class MNMF:
             self.G = graph_reader(args.input)
 
             self.number_of_nodes = len(nx.nodes(self.G))
-            if self.number_of_nodes>10000:
-                os.environ["CUDA_VISIBLE_DEVICES"]="-1"  
+            
+            if self.number_of_nodes > 10000:
+                os.environ["CUDA_VISIBLE_DEVICES"]="-1" 
+                
             self.S_0 = tf.placeholder(tf.float64, shape=(None, None))
             self.B1 = tf.placeholder(tf.float64, shape=(None, None))
             self.B2 = tf.placeholder(tf.float64, shape=(None, None))
