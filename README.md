@@ -8,6 +8,7 @@ Network embedding, aiming to learn the low-dimensional representations of nodes 
   <img width="720" src="community.jpeg">
 </p>
 
+The model is now also available in the package [Karate Club](https://github.com/benedekrozemberczki/karateclub).
 
 This repository provides an implementation for M-NMF as it is described in:
 > Community Preserving Network Embedding.
