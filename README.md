@@ -80,24 +80,24 @@ The following commands learn a graph embedding, cluster centers and writes them 
 Creating an MNMF embedding of the default dataset with the default hyperparameter settings. Saving the embedding, cluster centres and the log file at the default path.
 </p>
 
-```
-python src/main.py
+```sh
+$ python src/main.py
 ```
 
 Turning off the model saving.
 
-```
-python src/main.py --dump-matrices False
+```sh
+$ python src/main.py --dump-matrices False
 ```
 
 Creating an embedding of an other dataset the `Facebook Companies`. Saving the output and the log in a custom place.
 
-```
-python src/main.py --input data/company_edges.csv  --embedding-output output/embeddings/company_embedding.csv --cluster-mean-output output/cluster_means/company_means.csv
+```sh
+$ python src/main.py --input data/company_edges.csv  --embedding-output output/embeddings/company_embedding.csv --cluster-mean-output output/cluster_means/company_means.csv
 ```
 
 Creating a clustered embedding of the default dataset in 128 dimensions and 10 cluster centers.
 
-```
-python src/main.py --dimensions 128 --clusters 10
+```sh
+$ python src/main.py --dimensions 128 --clusters 10
 ```
