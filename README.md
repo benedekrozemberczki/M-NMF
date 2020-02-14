@@ -1,4 +1,9 @@
-# M-NMF ![GitHub stars](https://img.shields.io/github/stars/benedekrozemberczki/M-NMF.svg?style=plastic) ![GitHub forks](https://img.shields.io/github/forks/benedekrozemberczki/M-NMF.svg?color=blue&style=plastic) ![License](https://img.shields.io/github/license/benedekrozemberczki/M-NMF.svg?color=blue&style=plastic)
+# M-NMF 
+
+==============================
+![GitHub stars](https://img.shields.io/github/stars/benedekrozemberczki/M-NMF.svg?style=plastic)
+![GitHub forks](https://img.shields.io/github/forks/benedekrozemberczki/M-NMF.svg?color=blue&style=plastic)
+![License](https://img.shields.io/github/license/benedekrozemberczki/M-NMF.svg?color=blue&style=plastic)
 
 ### Abstract
 <p align="justify">
