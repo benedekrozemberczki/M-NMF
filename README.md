@@ -1,6 +1,6 @@
-# M-NMF 
-
-![License](https://img.shields.io/github/license/benedekrozemberczki/M-NMF.svg?color=blue&style=plastic)
+M-NMF 
+===============
+![License](https://img.shields.io/github/license/benedekrozemberczki/M-NMF.svg?color=blue&style=plastic) [![codebeat badge](https://codebeat.co/badges/44e1bec9-f91a-491a-9f5c-c26bab9660b4)](https://codebeat.co/projects/github-com-benedekrozemberczki-m-nmf-master)
 
 ### Abstract
 <p align="justify">
