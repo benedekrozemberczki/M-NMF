@@ -1,6 +1,6 @@
 M-NMF 
 ===============
-![License](https://img.shields.io/github/license/benedekrozemberczki/M-NMF.svg?color=blue&style=plastic) [![codebeat badge](https://codebeat.co/badges/44e1bec9-f91a-491a-9f5c-c26bab9660b4)](https://codebeat.co/projects/github-com-benedekrozemberczki-m-nmf-master) [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/M-NMF.svg)](https://github.com/benedekrozemberczki/M-NMF/archive/master.zip)
+[![codebeat badge](https://codebeat.co/badges/44e1bec9-f91a-491a-9f5c-c26bab9660b4)](https://codebeat.co/projects/github-com-benedekrozemberczki-m-nmf-master) [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/M-NMF.svg)](https://github.com/benedekrozemberczki/M-NMF/archive/master.zip)
 
 
 ### Abstract
@@ -104,3 +104,8 @@ Creating a clustered embedding of the default dataset in 128 dimensions and 10 c
 ```sh
 $ python src/main.py --dimensions 128 --clusters 10
 ```
+--------------------------------------------------------------------------------
+
+**License**
+
+- [GNU](https://github.com/benedekrozemberczki/M-NMF/blob/master/LICENSE)
