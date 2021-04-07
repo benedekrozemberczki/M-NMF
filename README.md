@@ -13,7 +13,7 @@ Network embedding, aiming to learn the low-dimensional representations of nodes 
 
 The model is now also available in the package [Karate Club](https://github.com/benedekrozemberczki/karateclub).
 
-This repository provides a **TensorFlow** implementation for M-NMF as it is described in:
+This repository provides a **TensorFlow** implementation for **M-NMF** as it is described in:
 > **Community Preserving Network Embedding.**
 > Xiao Wang, Peng Cui, Jing Wang, Jain Pei, WenWu Zhu, Shiqiang Yang.
 > Proceedings of the Thirsty-First AAAI conference on Artificial Intelligence (AAAI-17).
