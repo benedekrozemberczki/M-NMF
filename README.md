@@ -104,10 +104,10 @@ Creating a clustered embedding of the default dataset in 128 dimensions and 10 c
 ```sh
 $ python src/main.py --dimensions 128 --clusters 10
 ```
---------------------------------------------------------------------------------
+-------------------------------------------------------------------
 
 **License**
 
 - [GNU](https://github.com/benedekrozemberczki/M-NMF/blob/master/LICENSE)
 
---------------------------------------------------------------------------------
+--------------------------------------------------------------------
