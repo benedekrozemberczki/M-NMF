@@ -23,6 +23,7 @@ A reference MatLab implementation is available [[here]](https://github.com/AnryY
 ### Requirements
 
 The codebase is implemented in Python 3.5.2. Package versions used for development are just below.
+
 ```
 networkx          2.4
 tqdm              4.19.5
@@ -38,10 +39,12 @@ python-louvain    0.11
 <p align="justify">
 The code takes an input graph in a csv file. Every row indicates an edge between two nodes separated by a comma. The first row is a header. Nodes should be indexed starting with 0. A sample graph for the `Facebook Politicians` dataset is included in the  `data/` directory.
 </p>
+
 ### Logging
 <p align="justify">
 The models are defined in a way that parameter settings and cluster quality is logged in every single epoch. Specifically we log the followings:
 </p>
+
 ```
 1. Hyperparameter settings.     We save each hyperparameter used in the experiment.
 2. Cluster quality.             Measured by modularity. We calculate it in every epoch.
