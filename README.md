@@ -113,4 +113,4 @@ $ python src/main.py --dimensions 128 --clusters 10
 
 - [GNU](https://github.com/benedekrozemberczki/M-NMF/blob/master/LICENSE)
 
------------------------------------------------------------------
+----------------------------------------------------
